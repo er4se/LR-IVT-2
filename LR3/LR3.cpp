@@ -1,27 +1,27 @@
-#include <iostream>
-#include <stdexcept>
+#include <iostream>                         //ЛАБОРАТОРНАЯ РАБОТА №3
+#include <stdexcept>                        //ВАРИАНТ 8
 
 template <typename T>
 class DynamicArray {
 private:
-    T* data;       // Указатель на массив
-    size_t size;   // Размер массива
+    T* data;                                // Указатель на массив
+    size_t size;                            // Размер массива
 
 public:
-    // Конструктор
+                                            // Конструктор
     DynamicArray(size_t n) : size(n) {
         if (n <= 0) {
             throw std::invalid_argument("Size must be greater than 0");
         }
-        data = new T[n]; // Выделение памяти под массив
+        data = new T[n];                    // Выделение памяти под массив
     }
 
-    // Деструктор
+                                            // Деструктор
     ~DynamicArray() {
-        delete[] data; // Освобождение памяти
+        delete[] data;                      // Освобождение памяти
     }
 
-    // Метод для установки значения элемента массива
+                                            // Метод для установки значения элемента массива
     void set(size_t index, T value) {
         if (index >= size) {
             throw std::out_of_range("Index out of range");
@@ -29,7 +29,7 @@ public:
         data[index] = value;
     }
 
-    // Метод для получения значения элемента массива
+                                            // Метод для получения значения элемента массива
     T get(size_t index) const {
         if (index >= size) {
             throw std::out_of_range("Index out of range");
@@ -37,7 +37,7 @@ public:
         return data[index];
     }
 
-    // Метод для просмотра значений массива
+                                            // Метод для просмотра значений массива
     void display() const {
         for (size_t i = 0; i < size; ++i) {
             std::cout << data[i] << " ";
@@ -45,7 +45,7 @@ public:
         std::cout << std::endl;
     }
 
-    // Метод для формирования нового массива по индивидуальному заданию
+                                            // Метод для формирования нового массива по индивидуальному заданию
     DynamicArray<T> createNewArray() const {
         if (size < 2) {
             throw std::logic_error("Not enough elements to form a new array");
@@ -65,9 +65,9 @@ int main() {
     std::cout << "Введите размер массива N: ";
     std::cin >> N;
 
-    DynamicArray<int> arr(N); // Пример с целочисленным массивом
+    DynamicArray<int> arr(N);               // Пример с целочисленным массивом
 
-    // Ввод элементов массива
+                                            // Ввод элементов массива
     for (size_t i = 0; i < N; ++i) {
         int value;
         std::cout << "Введите элемент a(" << i + 1 << "): ";
@@ -78,7 +78,7 @@ int main() {
     std::cout << "Исходный массив: ";
     arr.display();
 
-    // Создание нового массива по заданному правилу
+                                            // Создание нового массива по заданному правилу
     DynamicArray<int> newArr = arr.createNewArray();
 
     std::cout << "Новый массив (a(1)*a(2), a(2)*a(3), ...): ";
