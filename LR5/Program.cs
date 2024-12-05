@@ -1,25 +1,25 @@
-﻿namespace LR5
+﻿namespace LR5                                                       //ЛАБОРАТОРНАЯ РАБОТА №5. ВАРИАНТ 8
 {
     internal class Program
     {
-        class Time
+        class Time                                                  //Целевой класс по заданию
         {
-            private int hour, min, sec;
+            private int hour, min, sec;                             //Поля класса (часы, минуты, секунды)
 
-            public Time(int sec)
+            public Time(int sec)                                    //Конструктор с установкой времени
             {
                 this.sec = sec;
             }
 
-            public void setTime(int hour, int min)
+            public void setTime(int hour, int min)                  //Метод установки часов и минут
             {
                 this.hour = hour;
                 this.min = min;
             }
 
-            public void timeIncr()
+            public void timeIncr()                                  //Метод инкремента
             {
-                if (sec >= 59)
+                if (sec >= 59)                                      //Проверка лимитов времени
                 {
                     sec = 0;
                     if (min >= 59)
@@ -39,7 +39,7 @@
                     sec++;
             }
 
-            public void PrintTime()
+            public void PrintTime()                                 //Метод печати времени
             {
                 Console.WriteLine(hour + ":" + min + ":" + sec);
             }
@@ -55,12 +55,12 @@
             Console.Write("Введите секунды (будут переданы в конструктор): "); sec = Convert.ToInt32(Console.ReadLine());
 
 
-            Time t = new Time(sec);
-            t.setTime(hour, min);
+            Time t = new Time(sec);                                 //Секунды передаются в конструктор
+            t.setTime(hour, min);                                   //Устанавливаем часы и минуты отдельно
 
             Console.Write("\nВремя до инкремента: "); t.PrintTime();
 
-            t.timeIncr();
+            t.timeIncr();                                           //Инкремент
             Console.Write("Время после инкремента: "); t.PrintTime();
         }
     }
